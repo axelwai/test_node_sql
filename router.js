@@ -7,7 +7,8 @@ module.exports = sequelize => {
 
 	return router;
 
-	async function getUsers() {
-		return await sequelize.models.user.findAll();
+	async function getUsers(req, res, next) {
+		const users = await sequelize.models.user.findAll();
+		res.json(users);
 	}
 }
